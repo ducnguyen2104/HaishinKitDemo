@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,9 @@
 		6239A8A027799B38000853D5 /* HaishinKitDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6239A89E27799B38000853D5 /* HaishinKitDemo.xcdatamodeld */; };
 		6239A8A227799B3A000853D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6239A8A127799B3A000853D5 /* Assets.xcassets */; };
 		6239A8A527799B3A000853D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6239A8A327799B3A000853D5 /* LaunchScreen.storyboard */; };
+		6239A8AE27799E37000853D5 /* HaishinKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6239A8AD27799E37000853D5 /* HaishinKit */; };
+		6239A8B02779B3FA000853D5 /* StreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6239A8AF2779B3FA000853D5 /* StreamViewController.swift */; };
+		6239A8B22779B44E000853D5 /* WatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6239A8B12779B44E000853D5 /* WatchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,8 @@
 		6239A8A127799B3A000853D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6239A8A427799B3A000853D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6239A8A627799B3A000853D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6239A8AF2779B3FA000853D5 /* StreamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamViewController.swift; sourceTree = "<group>"; };
+		6239A8B12779B44E000853D5 /* WatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6239A8AE27799E37000853D5 /* HaishinKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +72,8 @@
 				6239A8A327799B3A000853D5 /* LaunchScreen.storyboard */,
 				6239A8A627799B3A000853D5 /* Info.plist */,
 				6239A89E27799B38000853D5 /* HaishinKitDemo.xcdatamodeld */,
+				6239A8AF2779B3FA000853D5 /* StreamViewController.swift */,
+				6239A8B12779B44E000853D5 /* WatchViewController.swift */,
 			);
 			path = HaishinKitDemo;
 			sourceTree = "<group>";
@@ -86,6 +94,9 @@
 			dependencies = (
 			);
 			name = HaishinKitDemo;
+			packageProductDependencies = (
+				6239A8AD27799E37000853D5 /* HaishinKit */,
+			);
 			productName = HaishinKitDemo;
 			productReference = 6239A89227799B38000853D5 /* HaishinKitDemo.app */;
 			productType = "com.apple.product-type.application";
@@ -106,7 +117,7 @@
 				};
 			};
 			buildConfigurationList = 6239A88D27799B38000853D5 /* Build configuration list for PBXProject "HaishinKitDemo" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -114,6 +125,9 @@
 				Base,
 			);
 			mainGroup = 6239A88927799B38000853D5;
+			packageReferences = (
+				6239A8AC27799E37000853D5 /* XCRemoteSwiftPackageReference "HaishinKit" */,
+			);
 			productRefGroup = 6239A89327799B38000853D5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -141,9 +155,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6239A8B02779B3FA000853D5 /* StreamViewController.swift in Sources */,
 				6239A8A027799B38000853D5 /* HaishinKitDemo.xcdatamodeld in Sources */,
 				6239A89A27799B38000853D5 /* ViewController.swift in Sources */,
 				6239A89627799B38000853D5 /* AppDelegate.swift in Sources */,
+				6239A8B22779B44E000853D5 /* WatchViewController.swift in Sources */,
 				6239A89827799B38000853D5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,6 +380,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6239A8AC27799E37000853D5 /* XCRemoteSwiftPackageReference "HaishinKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/shogo4405/HaishinKit.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6239A8AD27799E37000853D5 /* HaishinKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6239A8AC27799E37000853D5 /* XCRemoteSwiftPackageReference "HaishinKit" */;
+			productName = HaishinKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		6239A89E27799B38000853D5 /* HaishinKitDemo.xcdatamodeld */ = {
