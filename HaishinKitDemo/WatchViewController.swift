@@ -11,6 +11,9 @@ import HaishinKit
 
 class WatchViewController: UIViewController, HKPictureInPictureController {
 
+    var streamUrl: String = ""
+    var streamKey: String = ""
+    
     private static let maxRetryCount: Int = 5
     
     @IBOutlet private weak var playbackButton: UIButton!
@@ -35,7 +38,7 @@ class WatchViewController: UIViewController, HKPictureInPictureController {
         // add ViewController#view
         view.addSubview(hkView)
         
-        rtmpConnection.connect("rtmp://127.0.0.1/live")
+        rtmpConnection.connect(streamUrl)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -54,13 +57,13 @@ class WatchViewController: UIViewController, HKPictureInPictureController {
             switch code {
             case RTMPConnection.Code.connectSuccess.rawValue:
                 retryCount = 0
-                rtmpStream.play(ViewController.streamKey)
+                rtmpStream.play(streamKey)
             case RTMPConnection.Code.connectFailed.rawValue, RTMPConnection.Code.connectClosed.rawValue:
                 guard retryCount <= WatchViewController.maxRetryCount else {
                     return
                 }
                 Thread.sleep(forTimeInterval: pow(2.0, Double(retryCount)))
-                rtmpConnection.connect("rtmp://127.0.0.1/live")
+                rtmpConnection.connect(streamUrl)
                 retryCount += 1
             default:
                 break

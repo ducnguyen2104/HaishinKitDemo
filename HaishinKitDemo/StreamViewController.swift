@@ -17,6 +17,9 @@ class StreamViewController: UIViewController {
     private var rtmpStream: RTMPStream!
     private var retryCount: Int = 0
     
+    var streamUrl: String = ""
+    var streamKey: String = ""
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -79,7 +82,7 @@ class StreamViewController: UIViewController {
         // add ViewController#view
         view.addSubview(hkView)
         
-        rtmpConnection.connect("rtmp://192.168.1.122/live")
+        rtmpConnection.connect(streamUrl)
         // if you want to record a stream.
         // rtmpStream.publish("streamName", type: .localRecord)
     }
@@ -100,14 +103,14 @@ class StreamViewController: UIViewController {
         switch code {
         case RTMPConnection.Code.connectSuccess.rawValue:
             retryCount = 0
-            rtmpStream.publish(ViewController.streamKey)
+            rtmpStream.publish(streamKey)
             // sharedObject!.connect(rtmpConnection)
         case RTMPConnection.Code.connectFailed.rawValue, RTMPConnection.Code.connectClosed.rawValue:
             guard retryCount <= StreamViewController.maxRetryCount else {
                 return
             }
             Thread.sleep(forTimeInterval: pow(2.0, Double(retryCount)))
-            rtmpConnection.connect("rtmp://192.168.1.122/live")
+            rtmpConnection.connect(streamUrl)
             retryCount += 1
         default:
             break
