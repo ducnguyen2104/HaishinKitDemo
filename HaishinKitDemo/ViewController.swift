@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         let textField = UITextField()
         textField.textColor = .black
         textField.placeholder = "rtmp://localhost/live"
-        textField.text = "rtmp://127.0.0.1"
+        textField.text = "rtmp://127.0.0.1/live"
         textField.textAlignment = .center
         return textField
     }()
@@ -67,14 +67,27 @@ class ViewController: UIViewController {
         vc.streamKey = streamKey
         present(vc, animated: true, completion: nil)
     }
+    
+    private lazy var closeKbView: UIView = {
+        let view = UIView()
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeKb)))
+        return view
+    }()
+    
+    @objc private func closeKb() {
+        view.endEditing(true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        view.addSubview(closeKbView)
         view.addSubview(streamUrlTxtField)
         view.addSubview(streamKeyTxtField)
         view.addSubview(watchBtn)
         view.addSubview(streamBtn)
+        
+        closeKbView.frame = view.bounds
         
         streamUrlTxtField.frame = CGRect(x: 0,
                                          y: view.frame.height/5 - 50,
@@ -86,14 +99,14 @@ class ViewController: UIViewController {
                                          width: view.frame.width,
                                          height: 100)
         
-        watchBtn.frame = CGRect(x: 0,
+        watchBtn.frame = CGRect(x: view.frame.width/4,
                                 y: 3*view.frame.height/5 - 50,
-                                width: view.frame.width,
+                                width: view.frame.width/2,
                                 height: 100)
         
-        streamBtn.frame = CGRect(x: 0,
+        streamBtn.frame = CGRect(x: view.frame.width/4,
                                  y: 4*view.frame.height/5 - 50,
-                                 width: view.frame.width,
+                                 width: view.frame.width/2,
                                  height: 100)
     }    
 
